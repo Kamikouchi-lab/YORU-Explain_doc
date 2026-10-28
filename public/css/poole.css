@@ -1,0 +1,304 @@
+/*
+ *                        ___
+ *                       /\_ \
+ *  _____     ___     ___\//\ \      __
+ * /\ '__`\  / __`\  / __`\\ \ \   /'__`\
+ * \ \ \_\ \/\ \_\ \/\ \_\ \\_\ \_/\  __/
+ *  \ \ ,__/\ \____/\ \____//\____\ \____\
+ *   \ \ \/  \/___/  \/___/ \/____/\/____/
+ *    \ \_\
+ *     \/_/
+ *
+ * Designed, built, and released under MIT license by @mdo. Learn more at
+ * https://github.com/poole/poole.
+ *
+ * Adapted for YORU-Explain: every colour is a token of explain.css, so the
+ * site follows the application's theme (dark) or its light variant.
+ */
+
+
+/*
+ * Body resets
+ */
+
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.6;
+}
+@media (min-width: 38em) {
+  html {
+    font-size: 18px;
+  }
+}
+
+body {
+  color: var(--text);
+  background-color: var(--bg);
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+          text-size-adjust: 100%;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+a strong {
+  color: inherit;
+}
+a:hover,
+a:focus {
+  color: var(--link-hover);
+  text-decoration: underline;
+  text-underline-offset: .15em;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: .5rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--heading);
+  text-rendering: optimizeLegibility;
+}
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  margin-top: 2.25rem;
+  font-size: 1.45rem;
+}
+h3 {
+  margin-top: 1.75rem;
+  font-size: 1.15rem;
+}
+h4, h5, h6 {
+  margin-top: 1.25rem;
+  font-size: 1rem;
+}
+
+/* Body text */
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+strong {
+  color: var(--text-strong);
+}
+
+/* Lists */
+ul, ol, dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+li + li {
+  margin-top: .2rem;
+}
+
+dt {
+  font-weight: bold;
+  color: var(--text-strong);
+}
+dd {
+  margin-bottom: .6rem;
+}
+
+/* Misc */
+hr {
+  position: relative;
+  margin: 2rem 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+
+abbr {
+  font-size: 85%;
+  font-weight: bold;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+abbr[title] {
+  cursor: help;
+  border-bottom: 1px dotted var(--border);
+}
+
+/* Code */
+code,
+pre,
+kbd {
+  font-family: var(--font-mono);
+}
+code {
+  padding: .12em .4em;
+  font-size: 84%;
+  color: var(--code-inline);
+  background-color: var(--bg-input);
+  border-radius: 4px;
+}
+pre {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding: .9rem 1rem;
+  font-size: .78rem;
+  line-height: 1.55;
+  white-space: pre;
+  overflow-x: auto;
+  color: var(--code-text);
+  background-color: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+pre code {
+  padding: 0;
+  font-size: 100%;
+  color: inherit;
+  background-color: transparent;
+}
+kbd {
+  display: inline-block;
+  padding: .05em .45em;
+  font-size: 80%;
+  color: var(--text-strong);
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+}
+
+/* Pygments / Rouge via Jekyll */
+.highlight {
+  margin-bottom: 1rem;
+  border-radius: 6px;
+}
+.highlight pre {
+  margin-bottom: 0;
+}
+
+/* Quotes */
+blockquote {
+  padding: .65rem 1rem;
+  margin: 1rem 0 1.25rem;
+  color: var(--text);
+  background: var(--bg-elev);
+  border-left: .25rem solid var(--accent-dim);
+  border-radius: 0 6px 6px 0;
+}
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 0 1rem;
+  border-radius: 5px;
+}
+
+/* Tables (wrapped in .table-wrap by script.js, so wide ones scroll) */
+table {
+  margin-bottom: 1.25rem;
+  width: 100%;
+  font-family: var(--font-sans);
+  font-size: .86rem;
+  line-height: 1.45;
+  border: 1px solid var(--border);
+  border-collapse: collapse;
+}
+td,
+th {
+  padding: .38rem .6rem;
+  text-align: left;
+  vertical-align: top;
+  border: 1px solid var(--border);
+}
+th {
+  color: var(--text-strong);
+  background-color: var(--table-head);
+  font-weight: 700;
+}
+tbody tr:nth-child(odd) td,
+tbody tr:nth-child(odd) th {
+  background-color: var(--bg-zebra);
+}
+td code,
+th code {
+  font-size: 88%;
+  white-space: nowrap;
+}
+
+
+/*
+ * Custom type
+ *
+ * Extend paragraphs with `.lead` for larger introductory text.
+ */
+
+.lead {
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+
+/*
+ * Messages
+ */
+
+.message {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  color: var(--text-muted);
+  background-color: var(--bg-elev);
+}
+
+
+/*
+ * Container
+ *
+ * Center the page content.
+ */
+
+.container {
+  max-width: 44rem;
+  padding-left:  1rem;
+  padding-right: 1rem;
+  margin-left:  auto;
+  margin-right: auto;
+}
+
+
+/*
+ * Posts and pages
+ */
+
+.page,
+.post {
+  margin-bottom: 3em;
+}
+
+.page-title,
+.post-title,
+.post-title a {
+  color: var(--heading);
+}
+.page-title,
+.post-title {
+  margin-top: 0;
+}

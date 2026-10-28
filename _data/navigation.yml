@@ -1,0 +1,26 @@
+# The tab bar under the masthead (five tabs, as in the application's window).
+tabs:
+  - title: Home
+    url: /
+  - title: User guide
+    url: /guides/install/
+    collection: guides
+  - title: How it works
+    url: /methods/what-is-measured/
+    collection: methods
+  - title: Reference
+    url: /reference/backends/
+    collection: reference
+  - title: Q&amp;A
+    url: /troubleshooting/
+
+# Groups of the sidebar, one per collection.
+sidebar:
+  - title: User guide
+    collection: guides
+  - title: How it works
+    collection: methods
+  - title: Reference
+    collection: reference
+  - title: Development notes
+    collection: devnotes

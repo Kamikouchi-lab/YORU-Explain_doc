@@ -1,0 +1,66 @@
+/* Rouge (Jekyll's highlighter), in the window's text colours: pink keywords,
+   green strings, amber numbers, light-blue functions, moon-yellow classes. */
+
+.highlight .hll { background-color: var(--select); }
+.highlight .err { color: var(--error); }
+.highlight .c,
+.highlight .ch,
+.highlight .cm,
+.highlight .c1,
+.highlight .cs,
+.highlight .cpf { color: var(--syn-comment); font-style: italic; }
+.highlight .cp { color: var(--syn-keyword); }
+.highlight .k,
+.highlight .kc,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kv,
+.highlight .ow { color: var(--syn-keyword); }
+.highlight .kt { color: var(--syn-class); }
+.highlight .o { color: var(--syn-op); }
+.highlight .s,
+.highlight .sa,
+.highlight .sb,
+.highlight .sc,
+.highlight .dl,
+.highlight .sd,
+.highlight .s2,
+.highlight .se,
+.highlight .sh,
+.highlight .si,
+.highlight .sx,
+.highlight .sr,
+.highlight .s1,
+.highlight .ss { color: var(--syn-string); }
+.highlight .m,
+.highlight .mb,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .il,
+.highlight .mo,
+.highlight .mx { color: var(--syn-number); }
+.highlight .nf,
+.highlight .fm { color: var(--syn-func); }
+.highlight .nc,
+.highlight .nn,
+.highlight .ne { color: var(--syn-class); }
+.highlight .nb,
+.highlight .bp { color: var(--syn-builtin); }
+.highlight .nd,
+.highlight .na { color: var(--syn-func); }
+.highlight .nv,
+.highlight .vc,
+.highlight .vg,
+.highlight .vi { color: var(--code-text); }
+.highlight .gp,
+.highlight .go { color: var(--syn-prompt); }
+.highlight .gd { color: var(--error); }
+.highlight .gi { color: var(--ok); }
+.highlight .gh,
+.highlight .gu { color: var(--heading-accent); font-weight: bold; }
+.highlight .ge { font-style: italic; }
+.highlight .gs { font-weight: bold; }
+.highlight .w { color: var(--code-text); }

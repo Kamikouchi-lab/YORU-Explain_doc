@@ -1,0 +1,51 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% if page.title == "Home" %}
+    {% assign page_title = site.title | append: " · " | append: site.tagline %}
+  {% else %}
+    {% assign page_title = page.title | append: " · " | append: site.title %}
+  {% endif %}
+  {% assign page_description = page.description | default: site.description | strip_html | strip_newlines | truncate: 200 %}
+  <title>{{ page_title }}</title>
+  <meta name="description" content="{{ page_description | escape }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:title" content="{{ page_title | escape }}">
+  <meta property="og:description" content="{{ page_description | escape }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:image" content="{{ site.social_image | absolute_url }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#12182a">
+
+  <!-- Dark (the application's own colours) unless the reader chose light. -->
+  <script>
+    (function () {
+      var theme = null;
+      try { theme = window.localStorage.getItem("yoru-explain-theme"); } catch (e) {}
+      document.documentElement.setAttribute("data-theme", theme === "light" ? "light" : "dark");
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap">
+  <link rel="stylesheet" href="{{ '/public/css/poole.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/public/css/syntax.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/public/css/lanyon.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/public/css/explain.css' | relative_url }}">
+
+  <link rel="icon" href="{{ '/public/favicon.ico' | relative_url }}" sizes="any">
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="{{ '/public/apple-touch-icon-precomposed.png' | relative_url }}">
+
+  {% if site.google_analytics_id %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics_id }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.google_analytics_id }}');
+  </script>
+  {% endif %}
+</head>

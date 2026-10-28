@@ -1,0 +1,68 @@
+# Setup
+title:               YORU-Explain
+tagline:             'Why a YORU detection scores as it does'
+description:         >-
+  YORU-Explain measures which parts of a video frame the score of one YORU
+  detection depends on — occlusion sensitivity and verified Grad-CAM — for
+  every YORU detection backend. A sister application of YORU and YORU-Tracker.
+url:                 "https://kamikouchi-lab.github.io"
+baseurl:             "/YORU-Explain_doc"
+permalink:           pretty
+markdown:            kramdown
+kramdown:
+  input:             GFM
+  hard_wrap:         false
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-sitemap
+
+# About/contact
+author:
+  name:              Hayato M. Yamanouchi
+  url:               https://github.com/HMYamano
+
+# Custom vars
+version:             v0.1.0
+yoru_requirement:    "2.0.0b3"
+# google_analytics_id: G-XXXXXXXXXX     # set to turn on Google Analytics (gtag.js)
+social_image:        /logos/YORU-Explain_logo_light.png
+
+github:
+  repo: https://github.com/Kamikouchi-lab/YORU-Explain
+
+# Previous / next links run through these collections in this order.
+doc_sequence: [guides, methods, reference, devnotes]
+
+collections:
+  guides:
+    output: true
+    permalink: /guides/:name/
+  methods:
+    output: true
+    permalink: /methods/:name/
+  reference:
+    output: true
+    permalink: /reference/:name/
+  devnotes:
+    output: true
+    permalink: /devnotes/:name/
+
+defaults:
+  - scope: { path: "", type: guides }
+    values: { layout: page }
+  - scope: { path: "", type: methods }
+    values: { layout: page }
+  - scope: { path: "", type: reference }
+    values: { layout: page }
+  - scope: { path: "", type: devnotes }
+    values: { layout: page }
+
+exclude:
+  - scripts
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .github

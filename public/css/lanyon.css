@@ -1,0 +1,293 @@
+/*
+ *  ___
+ * /\_ \
+ * \//\ \      __      ___   __  __    ___     ___
+ *   \ \ \   /'__`\  /' _ `\/\ \/\ \  / __`\ /' _ `\
+ *    \_\ \_/\ \_\.\_/\ \/\ \ \ \_\ \/\ \_\ \/\ \/\ \
+ *    /\____\ \__/.\_\ \_\ \_\/`____ \ \____/\ \_\ \_\
+ *    \/____/\/__/\/_/\/_/\/_/`/___/> \/___/  \/_/\/_/
+ *                               /\___/
+ *                               \/__/
+ *
+ * Designed, built, and released under MIT license by @mdo. Learn more at
+ * https://github.com/poole/lanyon.
+ *
+ * Adapted for YORU-Explain, as the YORU site adapts it: the same drawer and
+ * toggle, in the colours of the application's window (YORU's navy with
+ * YORU-Explain's hot pink).  Colours are tokens of explain.css.
+ */
+
+
+/*
+ * Global resets
+ */
+
+/* Prevent scroll on narrow devices */
+html,
+body {
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -.01rem;
+}
+
+
+/*
+ * Wrapper
+ *
+ * The wrapper is used to position site content when the sidebar is toggled.
+ */
+
+.wrap {
+  position: relative;
+  width: 100%;
+}
+
+
+/*
+ * Sidebar
+ *
+ * The drawer we toggle with the button in the corner of the page.  It is a
+ * panel of the application's window: navy in both themes.
+ */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: -15rem;
+  width: 15rem;
+  visibility: hidden;
+  overflow-y: auto;
+  font-family: var(--font-sans);
+  font-size: .875rem;
+  color: var(--chrome-text-muted);
+  background-color: var(--chrome-panel);
+  border-right: 1px solid var(--chrome-border);
+  -webkit-transition: all .3s ease-in-out;
+          transition: all .3s ease-in-out;
+}
+@media (min-width: 30em) {
+  .sidebar {
+    font-size: .78rem;
+  }
+}
+
+/* Sidebar content */
+.sidebar a {
+  font-weight: normal;
+  color: var(--chrome-text);
+}
+.sidebar-item {
+  padding: 1rem;
+}
+.sidebar-item p {
+  line-height: 1.5;
+}
+.sidebar-item p:last-child {
+  margin-bottom: 0;
+}
+
+/* Sidebar nav */
+.sidebar-nav {
+  border-bottom: 1px solid var(--chrome-border);
+}
+.sidebar-nav-item {
+  display: block;
+  padding: .45rem 1rem .45rem 1.25rem;
+  border-top: 1px solid var(--chrome-border);
+}
+.sidebar-nav-item.active,
+a.sidebar-nav-item:hover,
+a.sidebar-nav-item:focus {
+  text-decoration: none;
+  color: #fff;
+  background-color: var(--chrome-select);
+  border-color: transparent;
+}
+.sidebar-nav-item.active {
+  background-color: var(--accent-dim);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+@media (min-width: 48em) {
+  .sidebar-item {
+    padding: 1.25rem 1.5rem;
+  }
+  .sidebar-nav-item {
+    padding-left:  1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Groups (one per collection), as on the YORU site */
+.sidebar details {
+  margin: 0;
+  padding: 0;
+}
+.sidebar details > .sidebar-nav-item:not(summary) {
+  padding-left: 2.25rem;
+}
+.sidebar summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--chrome-header);
+  list-style: none;
+}
+.sidebar summary::-webkit-details-marker {
+  display: none;
+}
+.sidebar summary::before {
+  content: "";
+  display: inline-block;
+  width: .45em;
+  height: .45em;
+  margin-right: .55em;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-.15em) rotate(-45deg);
+  transition: transform .15s ease-in-out;
+}
+.sidebar details[open] > summary::before {
+  transform: translateY(-.25em) rotate(45deg);
+}
+.sidebar summary:hover {
+  background-color: var(--chrome-select);
+}
+
+.sidebar-app i {
+  display: inline-block;
+  width: .6em;
+  height: .6em;
+  margin-right: .55em;
+  border-radius: 2px;
+}
+.sidebar-app small {
+  color: var(--chrome-text-muted);
+}
+.sidebar-app.current {
+  color: #fff;
+}
+
+.sidebar-logo {
+  padding: 1.25rem 1.25rem 0;
+  text-align: center;
+}
+.sidebar-logo img {
+  width: 82%;
+  margin: auto;
+  display: block;
+}
+
+/* Hide the sidebar checkbox that we toggle with `.sidebar-toggle` */
+.sidebar-checkbox {
+  position: absolute;
+  opacity: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+/* The `label` that targets the `.sidebar-checkbox`: a button of the
+   application (pink on navy). */
+.sidebar-toggle {
+  position: absolute;
+  top: .7rem;
+  left: 1rem;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  color: #fff;
+  background-color: var(--accent-dim);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.sidebar-toggle::before {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  content: "";
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='%23fff' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' d='M2.5 11.5A.5.5 0 013 11h10a.5.5 0 010 1H3a.5.5 0 01-.5-.5zm0-4A.5.5 0 013 7h10a.5.5 0 010 1H3a.5.5 0 01-.5-.5zm0-4A.5.5 0 013 3h10a.5.5 0 010 1H3a.5.5 0 01-.5-.5z' clip-rule='evenodd'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+.sidebar-toggle:hover {
+  background-color: var(--accent-hover);
+}
+.sidebar-toggle:active,
+#sidebar-checkbox:focus-visible ~ .sidebar-toggle,
+#sidebar-checkbox:checked ~ .sidebar-toggle {
+  background-color: var(--primary);
+}
+#sidebar-checkbox:focus-visible ~ .sidebar-toggle {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (min-width: 30.1em) {
+  .sidebar-toggle {
+    position: fixed;
+  }
+}
+
+@media print {
+  .sidebar-toggle {
+    display: none;
+  }
+}
+
+
+/* Slide effect
+ *
+ * As a heads up, we don't use `transform: translate3d()` here because when
+ * mixed with `position: fixed;` for the sidebar toggle, it creates a new
+ * containing block.
+ */
+
+.wrap,
+.sidebar,
+.sidebar-toggle {
+  -webkit-backface-visibility: hidden;
+      -ms-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.wrap,
+.sidebar-toggle {
+  -webkit-transition: -webkit-transform .3s ease-in-out;
+          transition: transform .3s ease-in-out;
+}
+
+#sidebar-checkbox:checked + .sidebar,
+#sidebar-checkbox:checked ~ .sidebar {
+  z-index: 10;
+  visibility: visible;
+}
+#sidebar-checkbox:checked ~ .sidebar,
+#sidebar-checkbox:checked ~ .wrap,
+#sidebar-checkbox:checked ~ .sidebar-toggle {
+  -webkit-transform: translateX(15rem);
+      -ms-transform: translateX(15rem);
+          transform: translateX(15rem);
+}
+
+
+/*
+ * Overlay sidebar
+ *
+ * Make the sidebar content overlay the viewport content instead of pushing it
+ * aside when toggled (as on the YORU site).
+ */
+
+.sidebar-overlay #sidebar-checkbox:checked ~ .wrap {
+  -webkit-transform: translateX(0);
+      -ms-transform: translateX(0);
+          transform: translateX(0);
+}
+.sidebar-overlay #sidebar-checkbox:checked ~ .sidebar-toggle {
+  box-shadow: 0 0 0 .2rem var(--chrome-bg);
+}
+.sidebar-overlay #sidebar-checkbox:checked ~ .sidebar {
+  box-shadow: .25rem 0 1.5rem var(--shadow);
+}

@@ -1,0 +1,9 @@
+<nav class="tabs" aria-label="Sections">
+  {% for tab in site.data.navigation.tabs %}
+    {% assign active = false %}
+    {% if tab.collection and page.collection == tab.collection %}{% assign active = true %}{% endif %}
+    {% if tab.url == page.url %}{% assign active = true %}{% endif %}
+    {% if tab.url == "/" and page.title == "Home" %}{% assign active = true %}{% endif %}
+    <a class="tab{% if active %} active{% endif %}" href="{{ tab.url | relative_url }}"{% if active %} aria-current="page"{% endif %}>{{ tab.title }}</a>
+  {% endfor %}
+</nav>

@@ -1,0 +1,62 @@
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox"{% if page.title == "Home" %} checked{% endif %}>
+{% if page.title == "Home" %}
+<script>
+  // Home opens with the menu shown, as on the YORU site -- where it does not cover the page.
+  if (window.matchMedia && !window.matchMedia("(min-width: 82em)").matches) {
+    document.getElementById("sidebar-checkbox").checked = false;
+  }
+</script>
+{% endif %}
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <a href="{{ '/' | relative_url }}"><img src="{{ '/logos/YORU-Explain_logo_dark.png' | relative_url }}" alt="YORU-Explain"></a>
+  </div>
+
+  <div class="sidebar-item">
+    <p>{{ site.description }}</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item{% if page.title == 'Home' %} active{% endif %}" href="{{ '/' | relative_url }}">Home</a>
+
+    {% for group in site.data.navigation.sidebar %}
+      {% assign docs = site[group.collection] | sort: "order" %}
+      <details{% if page.collection == group.collection %} open{% endif %}>
+        <summary class="sidebar-nav-item">{{ group.title }}</summary>
+        {% for d in docs %}
+          <a class="sidebar-nav-item{% if page.url == d.url %} active{% endif %}" href="{{ d.url | relative_url }}">{{ d.title }}</a>
+        {% endfor %}
+      </details>
+    {% endfor %}
+
+    <!-- Other pages, in the order of their `order` -->
+    {% assign ordered_pages = site.pages | where: "layout", "page" | sort: "order" %}
+    {% for node in ordered_pages %}
+      {% if node.title and node.order %}
+        <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url | relative_url }}">{{ node.title }}</a>
+      {% endif %}
+    {% endfor %}
+
+    <details open>
+      <summary class="sidebar-nav-item">The YORU family</summary>
+      {% for app in site.data.ecosystem %}
+        {% if app.current %}
+          <span class="sidebar-nav-item sidebar-app current"><i style="background: {{ app.accent }}"></i>{{ app.name }} <small>(this site)</small></span>
+        {% else %}
+          <a class="sidebar-nav-item sidebar-app" href="{{ app.docs | default: app.repo }}"><i style="background: {{ app.accent }}"></i>{{ app.name }}{% if app.docs %} <small>docs</small>{% else %} <small>GitHub</small>{% endif %}</a>
+        {% endif %}
+      {% endfor %}
+    </details>
+
+    <a class="sidebar-nav-item" href="{{ site.github.repo }}">GitHub project</a>
+    <span class="sidebar-nav-item">Currently {{ site.version }}</span>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>&copy;Copyright {{ site.time | date: '%Y' }} {{ site.author.name }}</p>
+  </div>
+</div>

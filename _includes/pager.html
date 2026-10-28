@@ -1,0 +1,27 @@
+{% if page.collection %}
+  {% assign sequence = "" | split: "" %}
+  {% for label in site.doc_sequence %}
+    {% assign docs = site[label] | sort: "order" %}
+    {% assign sequence = sequence | concat: docs %}
+  {% endfor %}
+  {% assign here = -1 %}
+  {% for d in sequence %}
+    {% if d.url == page.url %}{% assign here = forloop.index0 %}{% endif %}
+  {% endfor %}
+  {% if here >= 0 %}
+    {% assign before = here | minus: 1 %}
+    {% assign after = here | plus: 1 %}
+    <nav class="pager" aria-label="Previous and next page">
+      {% if before >= 0 %}
+        {% assign prev = sequence[before] %}
+        <a class="pager-item pager-prev" href="{{ prev.url | relative_url }}"><small>Previous</small>{{ prev.title }}</a>
+      {% else %}
+        <span class="pager-item pager-empty"></span>
+      {% endif %}
+      {% if after < sequence.size %}
+        {% assign next = sequence[after] %}
+        <a class="pager-item pager-next" href="{{ next.url | relative_url }}"><small>Next</small>{{ next.title }}</a>
+      {% endif %}
+    </nav>
+  {% endif %}
+{% endif %}

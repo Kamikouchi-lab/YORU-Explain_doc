@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  {% include head.html %}
+
+  <body class="theme-explain sidebar-overlay{% if page.title == 'Home' %} is-home{% endif %}">
+
+    {% include sidebar.html %}
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <header class="masthead">
+        <div class="container">
+          <div class="masthead-row">
+            <a class="masthead-brand" href="{{ '/' | relative_url }}" title="Home">
+              <img class="masthead-icon" src="{{ '/logos/YORU-Explain_icon.png' | relative_url }}" alt="" width="34" height="34">
+              <span class="masthead-title">{{ site.title }}</span>
+            </a>
+            <small class="masthead-tagline">{{ site.tagline }}</small>
+          </div>
+          {% include tabs.html %}
+        </div>
+      </header>
+
+      <main class="container content" id="content">
+        {{ content }}
+      </main>
+
+      <footer class="site-footer">
+        <div class="container">
+          <p>
+            YORU-Explain {{ site.version }} &middot; part of the YORU family:
+            {% for app in site.data.ecosystem %}<a href="{{ app.docs | default: app.repo }}">{{ app.name }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}
+          </p>
+          <p>&copy; {{ site.time | date: '%Y' }} {{ site.author.name }} &middot; the software is licensed under AGPL-3.0-or-later</p>
+        </div>
+      </footer>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle" title="Menu" aria-label="Toggle the menu"></label>
+    <button class="theme-toggle" type="button" title="Switch between dark and light" aria-label="Switch between dark and light">
+      <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.6A8.4 8.4 0 0 1 9.4 3.8a8.4 8.4 0 1 0 10.8 10.8z"/></svg>
+    </button>
+
+    <script src="{{ '/public/js/script.js' | relative_url }}"></script>
+  </body>
+</html>

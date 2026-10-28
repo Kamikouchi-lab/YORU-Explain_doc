@@ -1,0 +1,18 @@
+# The YORU family, as shown on Home and in the sidebar.
+- name: YORU
+  purpose: Behaviour detection, training, closed-loop feedback
+  launch: python -m yoru
+  docs: https://kamikouchi-lab.github.io/YORU_doc/
+  repo: https://github.com/Kamikouchi-lab/YORU
+  accent: "#f2d84f"
+- name: YORU-Tracker
+  purpose: Identity across frames, trajectories, per-animal tracks
+  launch: python -m yoru_tracker
+  repo: https://github.com/Kamikouchi-lab/YORU-Tracker
+  accent: "#48c9be"
+- name: YORU-Explain
+  purpose: Why a detection scores as it does
+  launch: python -m yoru_explain
+  repo: https://github.com/Kamikouchi-lab/YORU-Explain
+  accent: "#ff69b4"
+  current: true
