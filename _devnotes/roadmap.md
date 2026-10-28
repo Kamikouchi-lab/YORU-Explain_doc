@@ -8,7 +8,7 @@ description: What version 0.1 contains, and the concrete work planned after it, 
 
 - An adapter for every YORU detection backend, each identical to YORU's own detector: YOLOv5 (YORU v1 models), ultralytics (YOLOv8 / YOLO11 / YOLOv5u / YOLOv10, with OBB, segmentation and pose), RT-DETR, torchvision (Faster R-CNN, Mask R-CNN, SSD300), ONNX; anything else as a black box.
 - Fixed-candidate and re-detection scoring; occlusion sensitivity with controls; verified Grad-CAM.
-- The DearPyGui window, like YORU's and YORU-Tracker's (the first window was PyQt5; DearPyGui since 2026-10-17).
+- The DearPyGui window, like YORU's and YORU Tracker's (the first window was PyQt5; DearPyGui since 2026-10-17).
 - Reproducible run folders with provenance, and 330 tests.
 
 ## v0.2 &mdash; validity of the explanations
@@ -28,12 +28,13 @@ description: What version 0.1 contains, and the concrete work planned after it, 
 3. Optional external segmentation behind an adapter, with the masks stored and hashed like any input.
 4. Association with independently measured morphology or kinematics, when such features are supplied &mdash; reported as association, not cause.
 
-## v0.4 &mdash; YORU-Tracker
+## v0.4 &mdash; YORU Tracker and YOAKE
 
-1. Read YORU-Tracker's track and detections CSVs; attach track IDs to events; select "all frames of track 7 between t0 and t1" as one set of events.
+1. Read YORU Tracker's track and detections CSVs; attach track IDs to events; select "all frames of track 7 between t0 and t1" as one set of events.
 2. Per-track summaries over time, with frames still not treated as independent.
-3. Further identity modes: fixed-candidate mode for RT-DETR (following the encoder token a query was selected from) and Faster R-CNN (following the RPN anchor); YOLO26 end to end once YORU's ultralytics runs it so; rotated occlusion regions for OBB targets.
-4. Other methods, such as RISE, with the agreement between methods reported.
+3. An adapter for [YOAKE](https://github.com/HMYamano/YOAKE), a temporal, track-aligned behaviour model: first define what occlusion means for a model that sees a history of frames, then occlusion and attribution for its genuinely temporal inputs only.
+4. Further identity modes: fixed-candidate mode for RT-DETR (following the encoder token a query was selected from) and Faster R-CNN (following the RPN anchor); YOLO26 end to end once YORU's ultralytics runs it so; rotated occlusion regions for OBB targets.
+5. Other methods, such as RISE, with the agreement between methods reported.
 
 ## Housekeeping
 

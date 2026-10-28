@@ -68,7 +68,7 @@ When an event has been analysed, its runs are listed under **Results of the sele
 
 The colour scale beside the image belongs to the map on display:
 
-- **Occlusion** maps are signed, on a diverging scale centred on 0: <span class="swatch" style="background:#b40426"></span>red where hiding a patch **lowers** the score, <span class="swatch" style="background:#3b4cc0"></span>blue where it **raises** it, white for no change.
+- **Occlusion** maps are signed, on a diverging scale centred on 0: <span class="swatch" style="background:#b40426"></span>red where hiding a patch **lowers** the score, <span class="swatch" style="background:#3b4cc0"></span>blue where it **raises** it, light grey for no change.
 - **Grad-CAM** maps are non-negative, on viridis (<span class="swatch" style="background:#440154"></span>dark to <span class="swatch" style="background:#fde725"></span>yellow).
 
 Moving the mouse over the map shows its value at that pixel, or *(not scored)* where no patch was counted.

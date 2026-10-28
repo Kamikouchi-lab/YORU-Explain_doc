@@ -59,8 +59,8 @@ One row per detection chosen for explanation.
 
 | Key | Meaning |
 |---|---|
-| `request` | the analysis request: `method`, the method's settings, `verify_identity`, `use_cache`, `write_previews`. `AnalysisRequest.from_dict(config["request"])` re-creates it. |
-| method settings | occlusion: `patch_size`, `stride`, `baseline {kind, value [B,G,R], sigma}`, `region`, `context_scale`, `score {score_type, identity_mode, iou_threshold}`, `batch_size`, `seed`, `include_ambiguous`. Grad-CAM: `layer`, `score_type`, `identity_mode` (always `fixed_candidate`), `precision`, `score_tolerance`. |
+| `request` | the analysis request: `method`, `method_config`, `verify_identity`, `use_cache`, `write_previews`. `AnalysisRequest.from_dict(config["request"])` re-creates it. |
+| `method_config` | the method's settings. Occlusion: `patch_size`, `stride`, `baseline {kind, value [B,G,R], sigma}`, `region`, `context_scale`, `score {score_type, identity_mode, iou_threshold}`, `batch_size`, `seed`, `include_ambiguous`. Grad-CAM: `layer`, `score_type`, `identity_mode` (always `fixed_candidate`), `precision`, `score_tolerance`. |
 | `score_types`, `identity_modes` | the definitions, in words, of the scores and modes the run's model offers |
 | `model_id`, `model_options`, `adapter`, `adapter_version`, `events`, `frame_access`, `seed` | |
 
@@ -69,7 +69,7 @@ One row per detection chosen for explanation.
 | Key | Meaning |
 |---|---|
 | `status` | `running` (while it runs, or the process was killed), `completed` (every event has a row), `cancelled`, `failed` (the identity check failed, or the run itself was interrupted) |
-| `software` | versions of YORU-Explain, Python, NumPy, OpenCV, PyTorch, torchvision, YORU, DearPyGui, and the git commits of the YORU and YORU-Explain checkouts |
+| `software` | versions of YORU-Explain, Python, NumPy, OpenCV, PyTorch, torchvision, YORU, ultralytics, ONNX Runtime, DearPyGui, and the git commits of the YORU and YORU-Explain checkouts |
 | `hardware` | platform, CUDA / cuDNN versions, GPU names |
 | `adapter` | name, version and capabilities: family, candidate kind, identity modes, score types with their definitions, the measured determinism and batch dependence, the gradient probe's verdict, notes and warnings |
 | `model` | weights path, SHA-256, the YORU backend, class names, input size, thresholds, channel order, device, precision, and the family's own settings |

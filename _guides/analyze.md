@@ -90,7 +90,7 @@ Double-click a row (or select it and press **View in Explore**) to see the resul
 
 An event that fails does not stop the run; the next one is analysed. Each run folder is described in [Output files]({{ '/reference/output-files/' | relative_url }}).
 
-On the RTX 5060 Ti used for development, one event of the YOLOv5 fly model with 32-pixel patches, stride 16 and context &times;3 (375&ndash;528 patches) took 2.7&ndash;3.8 s at batch size 1 and 1.4&ndash;1.9 s at batch size 8.
+On the RTX 5060 Ti used for development, one event of the YOLOv5 fly model with 32-pixel patches, stride 16 and context &times;3 (375&ndash;528 patches) took 2.7&ndash;3.7 s at batch size 1 and 1.4&ndash;1.9 s at batch size 8.
 
 ## Reuse settings
 

@@ -6,7 +6,7 @@ description: A project is a folder that remembers your videos, your models, the 
 
 <figure class="screenshot">
   <img src="{{ '/imgs/gui_project.png' | relative_url }}" alt="The Project tab with one video and one loaded YOLOv5 model">
-  <figcaption>The <strong>Project</strong> tab: one video of YORU's test data, one YOLOv5 model, loaded on the GPU. The line under <em>Load selected model</em> summarises what the loaded model offers.</figcaption>
+  <figcaption>The <strong>Project</strong> tab: one video of YORU's test data, one YOLOv5 model, loaded on the GPU. The line next to <em>Load selected model</em> summarises what the loaded model offers.</figcaption>
 </figure>
 
 ## Create or open a project
@@ -33,7 +33,7 @@ Frames are numbered as YORU's analysis numbers them: in decoding order, from 0.
 | Button | What it does |
 |---|---|
 | **Check seeking** | Compares frames reached by seeking with frames decoded in order, on 5 samples of the selected video. Some videos cannot be seeked exactly; YORU-Explain then still reads analysed frames in order and verifies every seek by presentation time, so results are not affected. |
-| **Attach YORU detections CSV...** | Attaches a detections CSV written by YORU (or YORU-Tracker) to the selected video. Its boxes are drawn in light blue in *Explore*. |
+| **Attach YORU detections CSV...** | Attaches a detections CSV written by YORU (or YORU Tracker) to the selected video. Its boxes are drawn in light blue in *Explore*. |
 | **Events from CSV...** | Turns the attached CSV's detections into events in bulk, filtered by class and limited in number. Each one is found again with the loaded model before it is analysed (same class, IoU &ge; 0.9). |
 | **Verify files** | Checks that every video and model is still where the project expects it and unchanged. |
 
@@ -58,7 +58,7 @@ The model is run with YORU's thresholds, set here as YORU applies them: **conf**
 
 ## Load the model
 
-Select a model row and press **Load selected model**. Loading runs in the background; the window stays responsive. YORU-Explain then measures a few things about the model and shows them under the button:
+Select a model row and press **Load selected model**. Loading runs in the background; the window stays responsive. YORU-Explain then measures a few things about the model and shows them next to the button:
 
 | Shown | Meaning |
 |---|---|

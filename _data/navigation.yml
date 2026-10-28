@@ -11,7 +11,7 @@ tabs:
   - title: Reference
     url: /reference/backends/
     collection: reference
-  - title: Q&amp;A
+  - title: Q and A
     url: /troubleshooting/
 
 # Groups of the sidebar, one per collection.

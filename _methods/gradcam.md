@@ -1,7 +1,7 @@
 ---
 title: Grad-CAM
 order: 3
-description: A gradient-weighted feature map of the detection's score &mdash; an attribution, offered only for models whose gradient path was verified.
+description: A gradient-weighted feature map of the detection's score — an attribution, offered only for models whose gradient path was verified.
 ---
 
 ## Definition
@@ -14,7 +14,7 @@ CAM      = Σ_c  α_c · A_c
 Grad-CAM = max(CAM, 0)
 ```
 
-The map file keeps both: `cam_feature`, the signed CAM on the layer's grid, and `cam`, the ReLU upsampled bilinearly (cell *(i, j)* centred on input pixel *((j+½)s, (i+½)s)*), cropped by the input padding and resized to the frame.
+The map file keeps both: `cam_feature`, the signed CAM on the layer's grid, and `cam`, the ReLU upsampled bilinearly (cell *(i, j)* centred on input pixel *((j+½)·stride, (i+½)·stride)*, where *stride* is the layer's stride in input pixels), cropped by the input padding and resized to the frame.
 
 <figure>
   <img src="{{ '/imgs/preview_gradcam_ev-0003.png' | relative_url }}" alt="Grad-CAM of a copulation detection">

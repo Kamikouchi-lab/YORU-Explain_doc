@@ -772,14 +772,38 @@ dl.terms dd {
  * ---------------------------------------------------------------------- */
 
 @media print {
+  /* The light theme's colours, whichever theme is on screen. */
   :root,
   :root[data-theme] {
+    color-scheme: light;
     --bg: #fff;
     --bg-elev: #fff;
+    --bg-input: #eef1f7;
+    --bg-zebra: #f8f9fc;
+    --border: #e0e5ef;
     --text: #222;
+    --text-strong: #011b43;
+    --text-muted: #5f6b85;
     --heading: #011b43;
     --heading-accent: #011b43;
     --link: #011b43;
+    --select: #f7dcea;
+    --table-head: #ece9f4;
+    --ok: #1f7a45;
+    --warn: #9a5800;
+    --error: #b42318;
+    --code-bg: #f6f7fb;
+    --code-text: #1f2a44;
+    --code-inline: #1b3f78;
+    --syn-comment: #66728c;
+    --syn-keyword: #a62b70;
+    --syn-string: #1f7a45;
+    --syn-number: #9a5800;
+    --syn-func: #1d5fa8;
+    --syn-class: #6f5600;
+    --syn-builtin: #84205a;
+    --syn-op: #384052;
+    --syn-prompt: #66728c;
   }
   .sidebar,
   .sidebar-toggle,

@@ -43,7 +43,7 @@ A boundary test pins which YORU names YORU-Explain may use outside YORU's docume
 
 ## Continuous integration
 
-Every push and pull request runs the tests on Windows (`windows-latest`), modelled on YORU-Tracker's CI:
+Every push and pull request runs the tests on Windows (`windows-latest`), modelled on YORU Tracker's CI:
 
 1. YORU-Explain and YORU are checked out side by side; YORU at the ref in the repository variable `YORU_REF`, or else its `yoru-tracker-lite` branch. A manual run can name any YORU ref.
 2. `uv sync --locked` installs the locked environment; it fails if `uv.lock` no longer matches `pyproject.toml`.

@@ -81,7 +81,7 @@ The three applications are installed side by side in one folder and look like si
     <p>The explained score is that of the pre-NMS candidate the detection came from &mdash; never "the best box of the class", which would follow whichever of two flies is stronger.</p>
   </div>
   <div class="feature">
-    <h3>No score is never zero</h3>
+    <h3>A missing score is never 0</h3>
     <p>A target that disappears, becomes ambiguous or fails gets a named status and no number. Nothing missing is written as 0.</p>
   </div>
   <div class="feature">
@@ -116,7 +116,7 @@ uv run python -m yoru_explain
 - [User guide]({{ '/guides/install/' | relative_url }}) &mdash; install, then the five tabs of the window: Project, Explore, Analyze, Statistics, Settings; and the Python API
 - [How it works]({{ '/methods/what-is-measured/' | relative_url }}) &mdash; what exactly is measured, occlusion sensitivity, Grad-CAM, and how to read the results
 - [Reference]({{ '/reference/backends/' | relative_url }}) &mdash; supported models, output files, what has been validated
-- [Q&amp;A]({{ '/troubleshooting/' | relative_url }}) and [Screenshots]({{ '/screenshots/' | relative_url }})
+- [Q and A]({{ '/troubleshooting/' | relative_url }}) and [Screenshots]({{ '/screenshots/' | relative_url }})
 - [Development notes]({{ '/devnotes/architecture/' | relative_url }}) &mdash; architecture, tests, roadmap
 
 ## Requirements

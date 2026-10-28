@@ -7,7 +7,7 @@ description: Every YORU detection backend has an adapter that runs the model the
 | YORU backend | Models | Adapter | Candidate | Identity modes | Score YORU reports | Grad-CAM |
 |---|---|---|---|---|---|---|
 | `yolov5` | YOLOv5 checkpoints (every YORU v1 model) | `yoru-yolov5` | anchor slot (level, anchor, cell) | fixed-candidate, re-detection | `obj_x_cls` = &sigma;(obj)&middot;&sigma;(cls) | yes |
-| `ultralytics` | YOLOv8, YOLO11, YOLOv5u, YOLOv9, YOLOv10; detect, **OBB**, segment, pose | `yoru-ultralytics` | anchor point (level, cell) | fixed-candidate, re-detection | `cls_prob` = &sigma;(cls) | yes |
+| `ultralytics` | YOLOv8, YOLO11, YOLOv5u, YOLOv10 (YOLOv9 runs too, not verified); detect, **OBB**, segment, pose | `yoru-ultralytics` | anchor point (level, cell) | fixed-candidate, re-detection | `cls_prob` = &sigma;(cls) | yes |
 | `rtdetr` | RT-DETR | `yoru-rtdetr` | decoder query | re-detection | `cls_prob` = &sigma;(cls) | yes (the query on its frame) |
 | `torchvision` | Faster R-CNN, Mask R-CNN (boxes) | `yoru-torchvision` | region proposal | re-detection | `cls_softmax` | yes (the proposal on its frame) |
 | `torchvision` | SSD300 | `yoru-torchvision` | default box (level, cell, aspect) | fixed-candidate, re-detection | `cls_softmax` | yes |
@@ -29,7 +29,7 @@ description: Every YORU detection backend has an adapter that runs the model the
 
 Built with YORU's own loader and run step by step as YORU's YOLOv5 detector runs it: YORU's colour-order rule, the bundled `letterbox`, the forward pass under `inference_mode` and CUDA autocast, the bundled NMS, the confidence threshold after NMS, `scale_boxes`. NMS is called once per image, as YORU calls it. Because it calls YORU's bundled functions rather than copies, the detections are YORU's by construction.
 
-### ultralytics: YOLOv8, YOLO11, YOLOv5u, YOLOv9, YOLOv10 (`yoru-ultralytics`)
+### ultralytics: YOLOv8, YOLO11, YOLOv5u, YOLOv10 (`yoru-ultralytics`)
 
 Calls ultralytics' own predictor preprocessing, the fused model, ultralytics' `non_max_suppression` (with the index of every kept candidate) and `scale_boxes`, one image per NMS call as YORU does. Detect, OBB, segmentation and pose models are supported; for pose models the score is read before the keypoints are decoded, with the values YORU reports. YOLOv10's end-to-end head is followed through its one-to-one branch.
 
