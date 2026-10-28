@@ -21,7 +21,7 @@ description: Common questions and what the messages mean. When something fails, 
 
 **A YOLOv5 model does not load.**
 
-> YORU-Explain runs YOLOv5 models with YORU's bundled YOLOv5 code, `yoru/libs/yolov5`, which not every YORU 2.0 version contains. Use a YORU checkout that has it, such as the `yoru-tracker-lite` branch.
+> YORU-Explain runs YOLOv5 models with YORU's bundled YOLOv5 code, `yoru/libs/yolov5`, which not every YORU 2.0 version contains (the `v2.0.0-beta.3` release does not). Use the {{ site.yoru_requirement }} release or later ([Install]({{ '/guides/install/' | relative_url }})).
 
 ## Grad-CAM
 

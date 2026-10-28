@@ -25,7 +25,7 @@ description: >-
 
 ## YORU-Explain
 
-YORU-Explain is a sister application of [YORU](https://kamikouchi-lab.github.io/YORU_doc/), like [YORU-Tracker](https://github.com/Kamikouchi-lab/YORU-Tracker): its own window, its own command, YORU unchanged. It loads a model of any of YORU's detection backends the way YORU runs it, checks that it detects exactly what YORU detects, lets you pick one detection on a video frame, and measures
+YORU-Explain is a sister application of [YORU](https://kamikouchi-lab.github.io/YORU_doc/), like [YORU Tracker](https://kamikouchi-lab.github.io/YORU-Tracker_doc/): its own window, its own command, YORU unchanged. It loads a model of any of YORU's detection backends the way YORU runs it, checks that it detects exactly what YORU detects, lets you pick one detection on a video frame, and measures
 
 - **Occlusion sensitivity** &mdash; the change in that detection's score when a region of the frame is replaced by a baseline (a *perturbation effect*);
 - **Grad-CAM** &mdash; a gradient-weighted feature map of that score (an *attribution*), offered only for models whose gradient path was verified.
@@ -39,7 +39,7 @@ Both methods are about **one model's score** for one detection. Neither is evide
 ## Part of the YORU family
 
 <div class="family">
-{% for app in site.data.ecosystem %}
+{% for app in site.data.ecosystem.apps %}
   <div class="family-card{% if app.current %} current{% endif %}" style="--app-accent: {{ app.accent }}">
     <h3>{{ app.name }}{% if app.current %}<span class="badge">this site</span>{% endif %}</h3>
     <p>{{ app.purpose }}</p>
@@ -49,21 +49,21 @@ Both methods are about **one model's score** for one detection. Neither is evide
 {% endfor %}
 </div>
 
-The three applications are installed side by side in one folder and look like siblings: each window is YORU's navy DearPyGui theme with its own accent &mdash; YORU blue, YORU-Tracker's teal, YORU-Explain's hot pink. YORU never imports YORU-Explain; YORU-Explain runs YORU's detectors through YORU's own code and checks itself against them.
+The three applications are installed side by side in one folder and look like siblings: each window is YORU's navy DearPyGui theme with its own accent &mdash; YORU blue, YORU Tracker's teal, YORU-Explain's hot pink. YORU never imports YORU-Explain; YORU-Explain runs YORU's detectors through YORU's own code and checks itself against them. How the whole family fits together is on YORU's [Ecosystem page]({{ site.data.ecosystem.overview }}).
 
-| | YORU | YORU-Tracker | YORU-Explain |
+| | YORU | YORU Tracker | YORU-Explain |
 |---|---|---|---|
 | Purpose | detection, closed loop | identity, trajectories | why a detection scores as it does |
 | Launch | `python -m yoru` | `python -m yoru_tracker` | `python -m yoru_explain` |
 | GUI | DearPyGui | DearPyGui | DearPyGui |
-| Accent | <span class="swatch" style="background:#194682"></span>YORU blue | <span class="swatch" style="background:#48c9be"></span>teal | <span class="swatch" style="background:#ff69b4"></span>hot pink |
+| Accent | <span class="swatch" style="background:#3c82d2"></span>YORU blue | <span class="swatch" style="background:#48c9be"></span>teal | <span class="swatch" style="background:#ff69b4"></span>hot pink |
 
 ## Versions
 
 | | Version | Notes |
 |---|---|---|
 | **YORU-Explain** | {{ site.version }} | First version, in development; no release has been tagged yet |
-| **YORU** (needed) | {{ site.yoru_requirement }} or later | A 2.0 version with the YOLOv5 backend (`yoru/libs/yolov5`); see [Install]({{ '/guides/install/' | relative_url }}) |
+| **YORU** (needed) | [{{ site.yoru_requirement }}](https://github.com/Kamikouchi-lab/YORU/releases/tag/{{ site.yoru_requirement }}) or later, below v3 | The first YORU release with the external API and the bundled YOLOv5 backend (`yoru/libs/yolov5`) &mdash; the same YORU that YORU Tracker needs; see [Install]({{ '/guides/install/' | relative_url }}) |
 
 ## Features
 
@@ -96,14 +96,13 @@ The three applications are installed side by side in one folder and look like si
 
 ## Quick install
 
-YORU-Explain needs a YORU checkout next to it, as YORU-Tracker does. With [uv](https://docs.astral.sh/uv/):
+YORU-Explain needs a YORU checkout next to it, as YORU Tracker does (both can share the same one). With [uv](https://docs.astral.sh/uv/):
 
 ```bash
 mkdir YORU-dev
 cd YORU-dev
-git clone https://github.com/Kamikouchi-lab/YORU.git
-git -C YORU checkout yoru-tracker-lite
-git clone https://github.com/Kamikouchi-lab/YORU-Explain.git
+git clone -b {{ site.yoru_requirement }} https://github.com/Kamikouchi-lab/YORU.git
+git clone{% if site.explain_branch %} -b {{ site.explain_branch }}{% endif %} https://github.com/Kamikouchi-lab/YORU-Explain.git
 cd YORU-Explain
 uv sync
 uv run python -m yoru_explain
@@ -126,7 +125,7 @@ uv run python -m yoru_explain
 
 ### Software
 - Python 3.10 (uv provides it)
-- YORU {{ site.yoru_requirement }} or later with `yoru/libs/yolov5`, checked out next to YORU-Explain
+- YORU {{ site.yoru_requirement }} or later (below v3), checked out next to YORU-Explain
 
 ### Hardware
 - An NVIDIA GPU is optional: everything also runs on the CPU, more slowly. PyTorch is installed as its CUDA 12.8 build, which RTX 50-series cards need.

@@ -1,18 +1,24 @@
-# The YORU family, as shown on Home and in the sidebar.
-- name: YORU
-  purpose: Behaviour detection, training, closed-loop feedback
-  launch: python -m yoru
-  docs: https://kamikouchi-lab.github.io/YORU_doc/
-  repo: https://github.com/Kamikouchi-lab/YORU
-  accent: "#f2d84f"
-- name: YORU-Tracker
-  purpose: Identity across frames, trajectories, per-animal tracks
-  launch: python -m yoru_tracker
-  repo: https://github.com/Kamikouchi-lab/YORU-Tracker
-  accent: "#48c9be"
-- name: YORU-Explain
-  purpose: Why a detection scores as it does
-  launch: python -m yoru_explain
-  repo: https://github.com/Kamikouchi-lab/YORU-Explain
-  accent: "#ff69b4"
-  current: true
+# The YORU family, as shown on Home, in the sidebar and in the footer.
+# Keep it in step with YORU-Tracker_doc/_data/ecosystem.yml; the full map is
+# the Ecosystem page of the YORU site (`overview` below).
+overview: https://kamikouchi-lab.github.io/YORU_doc/ecosystem/
+apps:
+  - name: YORU
+    purpose: Behaviour detection, training, closed-loop feedback
+    launch: python -m yoru
+    docs: https://kamikouchi-lab.github.io/YORU_doc/
+    repo: https://github.com/Kamikouchi-lab/YORU
+    accent: "#3c82d2"
+  - name: YORU Tracker
+    purpose: Identity across frames, trajectories, per-animal tracks
+    launch: python -m yoru_tracker
+    docs: https://kamikouchi-lab.github.io/YORU-Tracker_doc/
+    repo: https://github.com/Kamikouchi-lab/YORU-Tracker
+    accent: "#48c9be"
+  - name: YORU-Explain
+    purpose: Why a detection scores as it does
+    launch: python -m yoru_explain
+    docs: https://kamikouchi-lab.github.io/YORU-Explain_doc/
+    repo: https://github.com/Kamikouchi-lab/YORU-Explain
+    accent: "#ff69b4"
+    current: true

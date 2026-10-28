@@ -43,13 +43,14 @@
 
     <details open>
       <summary class="sidebar-nav-item">The YORU family</summary>
-      {% for app in site.data.ecosystem %}
+      {% for app in site.data.ecosystem.apps %}
         {% if app.current %}
           <span class="sidebar-nav-item sidebar-app current"><i style="background: {{ app.accent }}"></i>{{ app.name }} <small>(this site)</small></span>
         {% else %}
           <a class="sidebar-nav-item sidebar-app" href="{{ app.docs | default: app.repo }}"><i style="background: {{ app.accent }}"></i>{{ app.name }}{% if app.docs %} <small>docs</small>{% else %} <small>GitHub</small>{% endif %}</a>
         {% endif %}
       {% endfor %}
+      <a class="sidebar-nav-item" href="{{ site.data.ecosystem.overview }}">YORU Ecosystem <small>overview</small></a>
     </details>
 
     <a class="sidebar-nav-item" href="{{ site.github.repo }}">GitHub project</a>

@@ -4,7 +4,7 @@ tagline:             'Why a YORU detection scores as it does'
 description:         >-
   YORU-Explain measures which parts of a video frame the score of one YORU
   detection depends on — occlusion sensitivity and verified Grad-CAM — for
-  every YORU detection backend. A sister application of YORU and YORU-Tracker.
+  every YORU detection backend. A sister application of YORU and YORU Tracker.
 url:                 "https://kamikouchi-lab.github.io"
 baseurl:             "/YORU-Explain_doc"
 permalink:           pretty
@@ -24,7 +24,14 @@ author:
 
 # Custom vars
 version:             v0.1.0
-yoru_requirement:    "2.0.0b3"
+# The first YORU release with the external API and the bundled YOLOv5 backend
+# (YORU's yoru-tracker-lite branch plus the version bump). YORU Tracker needs
+# it too, so the two applications can share one YORU checkout.
+yoru_requirement:    v2.0.0-beta.4
+# The YORU-Explain branch the install commands clone. The DearPyGui window
+# these pages describe is on yoru-backends until Kamikouchi-lab/YORU-Explain
+# PRs #1 and #2 are merged into main; then delete this line.
+explain_branch:      yoru-backends
 # google_analytics_id: G-XXXXXXXXXX     # set to turn on Google Analytics (gtag.js)
 social_image:        /logos/YORU-Explain_logo_light.png
 
